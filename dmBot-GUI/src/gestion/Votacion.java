@@ -9,19 +9,6 @@ public class Votacion {
 	private static String todo="";
 	private static String soloMensaje="";
 	private static int aFavor=0;
-	
-	public static int getaFavor() {
-		return aFavor;
-	}
-
-	public static int getEnContra() {
-		return enContra;
-	}
-
-	public static int getApuntados() {
-		return apuntados.size();
-	}
-
 	private static int enContra=0;
 	private static ArrayList<String> apuntados;
 	
@@ -85,4 +72,25 @@ public class Votacion {
 		
 		return esta;
 	}
+	
+	public static int getaFavor() {
+		return aFavor;
+	}
+	
+	public static void aniadirVotoFavor(){
+		aFavor++;
+	}
+	
+	public static void aniadirVotoContra(){
+		enContra++;
+	}
+
+	public static int getEnContra() {
+		return enContra;
+	}
+
+	public static int getApuntados() {
+		return apuntados.size();
+	}
+	
 }

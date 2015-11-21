@@ -62,7 +62,6 @@ public class Interfaz {
 	private static JTextField txtCanal;
 	private static JTextField txtUsuario;
 	private static JTextField txtContra;
-	private static JLabel lblEstado;
 	private static JLabel estadoGenKey;
 	private static JLabel estadoModLinks;
 	private static JLabel estadoBot;
@@ -77,6 +76,8 @@ public class Interfaz {
 	private JTextField txtFraseVotacion;
 	private static JLabel estadoVotacion;
 	private PantallaCrearCuenta crearCuenta=new PantallaCrearCuenta();
+	private static IConfigBD pantallaBD=new IConfigBD();
+	private static PantallaError pantallaError=new PantallaError();
 	private static JList listApuntados;
 	private static DefaultListModel listadoDeApuntados = new DefaultListModel();
 	private static JTextField txtVTotal;
@@ -85,11 +86,6 @@ public class Interfaz {
 	private static JTextField txtMSGEnviar;
 	private static JList listChat;
 	private static DefaultListModel listaMensajesChat = new DefaultListModel();
-	private JTextField txtIpServerBD;
-	private JTextField txtUsuarioBD;
-	private JTextField txtPassBD;
-	private JTextField txtNombreBD;
-	private JTextField txtEstadoBD;
 	private static JScrollPane sPChat;
 	private static JTextField txtEstadoCanal;
 	private static JTextField txtEstadoViews;
@@ -130,7 +126,7 @@ public class Interfaz {
 		frmDmbot.getContentPane().setBackground(SystemColor.activeCaptionBorder);
 		frmDmbot.setIconImage(Toolkit.getDefaultToolkit().getImage(Interfaz.class.getResource("/data/logo.png")));
 		frmDmbot.setResizable(false);
-		frmDmbot.setTitle("dmBot 3.2 - Made by Dm94 (Twitter: @dm94dani)");
+		frmDmbot.setTitle("dmBot 3.3 - Made by Dm94 (Twitter: @dm94dani)");
 		frmDmbot.setBounds(100, 100, 447, 298);
 		frmDmbot.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDmbot.getContentPane().setLayout(null);
@@ -404,11 +400,6 @@ public class Interfaz {
 		bCerrar.setBounds(281, 36, 148, 23);
 		panelConfig.add(bCerrar);
 		
-		lblEstado = new JLabel("");
-		lblEstado.setBounds(0, 173, 439, 23);
-		panelConfig.add(lblEstado);
-		lblEstado.setHorizontalAlignment(SwingConstants.CENTER);
-		
 		checkAutoSaludo = new JCheckBox("Auto Saludo");
 		checkAutoSaludo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -606,6 +597,28 @@ public class Interfaz {
 		txtVContra.setBounds(151, 202, 86, 20);
 		panelVotacion.add(txtVContra);
 		
+		JButton btnAadirVotoA = new JButton("A\u00F1adir Voto a favor");
+		btnAadirVotoA.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Config.isVotacion()){
+					Votacion.aniadirVotoFavor();
+				}
+			}
+		});
+		btnAadirVotoA.setBounds(247, 176, 182, 23);
+		panelVotacion.add(btnAadirVotoA);
+		
+		JButton btnNewButton = new JButton("A\u00F1adir Voto en contra");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Config.isVotacion()){
+					Votacion.aniadirVotoContra();
+				}
+			}
+		});
+		btnNewButton.setBounds(247, 201, 182, 23);
+		panelVotacion.add(btnNewButton);
+		
 		JPanel panelChat = new JPanel();
 		panelChat.setBorder(null);
 		panelPrincipal.addTab("ChatBot", null, panelChat, null);
@@ -666,51 +679,15 @@ public class Interfaz {
 		panelPrincipal.setEnabledAt(5, false);
 		panelPuntos.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("Conexi\u00F3n a la base de datos:");
-		lblNewLabel_1.setBounds(10, 11, 172, 14);
-		panelPuntos.add(lblNewLabel_1);
-		
-		JLabel lblipSBD = new JLabel("IP del servidor:");
-		lblipSBD.setBounds(10, 36, 87, 20);
-		panelPuntos.add(lblipSBD);
-		
-		txtIpServerBD = new JTextField();
-		txtIpServerBD.setBounds(107, 36, 86, 20);
-		panelPuntos.add(txtIpServerBD);
-		txtIpServerBD.setColumns(10);
-		
-		JLabel lblUsuarioBD = new JLabel("Usuario:");
-		lblUsuarioBD.setBounds(10, 67, 87, 20);
-		panelPuntos.add(lblUsuarioBD);
-		
-		txtUsuarioBD = new JTextField();
-		txtUsuarioBD.setColumns(10);
-		txtUsuarioBD.setBounds(107, 67, 86, 20);
-		panelPuntos.add(txtUsuarioBD);
-		
-		JLabel lblPassBD = new JLabel("Contrase\u00F1a:");
-		lblPassBD.setBounds(10, 98, 87, 20);
-		panelPuntos.add(lblPassBD);
-		
-		txtPassBD = new JTextField();
-		txtPassBD.setColumns(10);
-		txtPassBD.setBounds(107, 98, 86, 20);
-		panelPuntos.add(txtPassBD);
-		
-		JLabel lblNombreBD = new JLabel("Nombre de la BD:");
-		lblNombreBD.setBounds(10, 129, 87, 20);
-		panelPuntos.add(lblNombreBD);
-		
-		txtNombreBD = new JTextField();
-		txtNombreBD.setColumns(10);
-		txtNombreBD.setBounds(107, 129, 86, 20);
-		panelPuntos.add(txtNombreBD);
-		
-		txtEstadoBD = new JTextField();
-		txtEstadoBD.setEditable(false);
-		txtEstadoBD.setBounds(0, 223, 439, 20);
-		panelPuntos.add(txtEstadoBD);
-		txtEstadoBD.setColumns(10);
+		JButton btnConfiguracin = new JButton("Configuraci\u00F3n");
+		btnConfiguracin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				pantallaBD.setVisible(true);
+				pantallaBD.hasFocus();
+			}
+		});
+		btnConfiguracin.setBounds(295, 11, 134, 23);
+		panelPuntos.add(btnConfiguracin);
 		
 		JPanel consola = new JPanel();
 		if(!debug){
@@ -800,7 +777,9 @@ public class Interfaz {
 	}
 	
 	public static void mostrarError(String error){
-		lblEstado.setText(error);
+		PantallaError.setError(error);
+		pantallaError.setVisible(true);
+		pantallaError.hasFocus();
 	}
 	
 	public static void leerConfig(String fConfig){
