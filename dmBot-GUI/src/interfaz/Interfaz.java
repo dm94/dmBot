@@ -251,7 +251,7 @@ public class Interfaz {
 			public void actionPerformed(ActionEvent e) {
 				Desktop enlace=Desktop.getDesktop();
 		        try {
-					enlace.browse(new URI("http://www.azubu.tv/"+Canal.getCanal()));
+					enlace.browse(new URI("http://adf.ly/9079441/www.azubu.tv/"+Canal.getCanal()));
 				} catch (IOException e1) {
 				} catch (URISyntaxException e1) {
 				}

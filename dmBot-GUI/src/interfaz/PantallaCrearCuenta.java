@@ -102,7 +102,7 @@ public class PantallaCrearCuenta extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				Desktop enlace=Desktop.getDesktop();
 		        try {
-					enlace.browse(new URI("https://www.youtube.com/watch?v=7-1boh0PngI"));
+					enlace.browse(new URI("http://adf.ly/9079441/www.youtube.com/watch?v=7-1boh0PngI"));
 				} catch (IOException e1) {
 				} catch (URISyntaxException e1) {
 				}
