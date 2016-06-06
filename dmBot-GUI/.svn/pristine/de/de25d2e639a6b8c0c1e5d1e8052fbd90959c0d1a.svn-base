@@ -1,6 +1,5 @@
 package interfaz;
 import gestion.*;
-import data.Idioma;
 
 import java.awt.EventQueue;
 import java.io.BufferedReader;
@@ -68,7 +67,6 @@ public class Interfaz {
 	private static JLabel estadoBot;
 	private static JTextField txtAdmin;
 	private static JComboBox cbIdioma;
-	private static JComboBox cbIdiomaBot;
 	private JTextField txtKeyWord;
 	private static JLabel estadoSorteo;
 	private static JCheckBox checkAviso;
@@ -96,8 +94,6 @@ public class Interfaz {
 	private static JTextField txtEstadoViewsTotales;
 	private boolean actulizadorEncendido=false;
 	private boolean debug=true;
-	private static Idioma idioma=new Idioma("");
-	private static Interfaz window;
 
 	/**
 	 * Launch the application.
@@ -106,7 +102,7 @@ public class Interfaz {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					window = new Interfaz("English");
+					Interfaz window = new Interfaz();
 					window.frmDmbot.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -118,8 +114,7 @@ public class Interfaz {
 	/**
 	 * Create the application.
 	 */
-	public Interfaz(String lenguaje) {
-		idioma=new Idioma(lenguaje);
+	public Interfaz() {
 		initialize();
 	}
 
@@ -131,7 +126,7 @@ public class Interfaz {
 		frmDmbot.getContentPane().setBackground(SystemColor.activeCaptionBorder);
 		frmDmbot.setIconImage(Toolkit.getDefaultToolkit().getImage(Interfaz.class.getResource("/data/logo.png")));
 		frmDmbot.setResizable(false);
-		frmDmbot.setTitle("dmBot 3.4 - Made by Dm94 (Twitter: @dm94dani)");
+		frmDmbot.setTitle("dmBot 3.3 - Made by Dm94 (Twitter: @dm94dani)");
 		frmDmbot.setBounds(100, 100, 447, 298);
 		frmDmbot.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDmbot.getContentPane().setLayout(null);
@@ -146,7 +141,7 @@ public class Interfaz {
 		panelPrincipal.addTab("Info", null, panelInfo, null);
 		panelInfo.setLayout(null);
 		
-		JLabel lblEstado_1 = new JLabel(idioma.getProperty("lbestado"));
+		JLabel lblEstado_1 = new JLabel("Estado:");
 		lblEstado_1.setBounds(10, 38, 86, 17);
 		panelInfo.add(lblEstado_1);
 		
@@ -158,7 +153,7 @@ public class Interfaz {
 		panelInfo.add(txtEstadoCanal);
 		txtEstadoCanal.setColumns(10);
 		
-		JLabel lblViews = new JLabel(idioma.getProperty("lbviewers"));
+		JLabel lblViews = new JLabel("Viewers:");
 		lblViews.setBounds(10, 61, 86, 20);
 		panelInfo.add(lblViews);
 		
@@ -169,7 +164,7 @@ public class Interfaz {
 		panelInfo.add(txtEstadoViews);
 		txtEstadoViews.setColumns(10);
 		
-		JLabel lblSeguidores = new JLabel(idioma.getProperty("lbseguidores"));
+		JLabel lblSeguidores = new JLabel("Seguidores:");
 		lblSeguidores.setBounds(10, 86, 86, 20);
 		panelInfo.add(lblSeguidores);
 		
@@ -180,7 +175,7 @@ public class Interfaz {
 		panelInfo.add(txtEstadoSeguidores);
 		txtEstadoSeguidores.setColumns(10);
 		
-		JLabel lblJuego = new JLabel(idioma.getProperty("lbjuego"));
+		JLabel lblJuego = new JLabel("Juego:");
 		lblJuego.setBounds(10, 120, 76, 14);
 		panelInfo.add(lblJuego);
 		
@@ -191,49 +186,49 @@ public class Interfaz {
 		panelInfo.add(txtEstadoJuego);
 		txtEstadoJuego.setColumns(10);
 		
-		JLabel lblBot = new JLabel(idioma.getProperty("lblbot"));
+		JLabel lblBot = new JLabel("BOT:");
 		lblBot.setBounds(138, 160, 66, 22);
 		panelInfo.add(lblBot);
 		lblBot.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		JLabel lblModLinks = new JLabel(idioma.getProperty("lblmodlinks"));
+		JLabel lblModLinks = new JLabel("ModLinks:");
 		lblModLinks.setBounds(138, 184, 66, 23);
 		panelInfo.add(lblModLinks);
 		lblModLinks.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		JLabel lblGenkey = new JLabel(idioma.getProperty("lblgenkey"));
+		JLabel lblGenkey = new JLabel("GenKey:");
 		lblGenkey.setBounds(138, 209, 66, 23);
 		panelInfo.add(lblGenkey);
 		lblGenkey.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		estadoBot = new JLabel(idioma.getProperty("off"));
+		estadoBot = new JLabel("OFF");
 		estadoBot.setBounds(219, 160, 29, 22);
 		panelInfo.add(estadoBot);
 		estadoBot.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		estadoModLinks = new JLabel(idioma.getProperty("off"));
+		estadoModLinks = new JLabel("OFF");
 		estadoModLinks.setBounds(219, 184, 29, 23);
 		panelInfo.add(estadoModLinks);
 		estadoModLinks.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		estadoGenKey = new JLabel(idioma.getProperty("off"));
+		estadoGenKey = new JLabel("OFF");
 		estadoGenKey.setBounds(219, 209, 29, 23);
 		panelInfo.add(estadoGenKey);
 		estadoGenKey.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JButton bIniciar = new JButton(idioma.getProperty("biniciar"));
+		JButton bIniciar = new JButton("Inciar/Parar Bot");
 		bIniciar.setBounds(281, 160, 148, 23);
 		panelInfo.add(bIniciar);
 		
-		JButton bModsLinks = new JButton(idioma.getProperty("bmodlinks"));
+		JButton bModsLinks = new JButton("ON/OFF ModLinks");
 		bModsLinks.setBounds(281, 184, 148, 23);
 		panelInfo.add(bModsLinks);
 		
-		JButton bGenKey = new JButton(idioma.getProperty("bgenkey"));
+		JButton bGenKey = new JButton("ON/OFF Genkey");
 		bGenKey.setBounds(281, 209, 148, 23);
 		panelInfo.add(bGenKey);
 		
-		JLabel lblViewsT = new JLabel(idioma.getProperty("lblviewst"));
+		JLabel lblViewsT = new JLabel("Views Totales:");
 		lblViewsT.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblViewsT.setBounds(187, 39, 116, 14);
 		panelInfo.add(lblViewsT);
@@ -245,13 +240,13 @@ public class Interfaz {
 		panelInfo.add(txtEstadoViewsTotales);
 		txtEstadoViewsTotales.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel(idioma.getProperty("lbldatoscanal"));
+		JLabel lblNewLabel_2 = new JLabel("Datos del canal");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setBounds(10, 11, 419, 14);
 		panelInfo.add(lblNewLabel_2);
 		
-		JButton btnIrAlCanal = new JButton(idioma.getProperty("biracanal"));
+		JButton btnIrAlCanal = new JButton("Ir al Canal");
 		btnIrAlCanal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Desktop enlace=Desktop.getDesktop();
@@ -297,7 +292,7 @@ public class Interfaz {
 					}
 					
 					if(actulizadorEncendido){
-						mostrarError(idioma.getProperty("errorautoupdateencendido"));
+						mostrarError("Auto update encendido");
 					}else{
 						Canal.setCanal(txtCanal.getText());
 						ActualizadorEstado actu=new ActualizadorEstado();
@@ -309,11 +304,11 @@ public class Interfaz {
 						Config.activarBot();
 						actualizarEstados();
 					} catch (NickAlreadyInUseException e1) {
-						mostrarError(idioma.getProperty("erroryaexisteusuario"));
+						mostrarError("Ya existe un usuario IRC conectado con ese nick");
 					} catch (IOException e1) {
-						mostrarError(idioma.getProperty("errorleerdatos"));
+						mostrarError("No se han podido leer los datos");
 					} catch (IrcException e1) {
-						mostrarError(idioma.getProperty("errorconexion"));
+						mostrarError("No se ha podido realizar la conexion, prueba más tarde");
 					}
 				}
 			}
@@ -322,10 +317,10 @@ public class Interfaz {
 		JPanel panelConfig = new JPanel();
 		panelConfig.setBorder(null);
 		panelConfig.setForeground(Color.WHITE);
-		panelPrincipal.addTab(idioma.getProperty("config"), null, panelConfig, idioma.getProperty("lblconfigbot"));
+		panelPrincipal.addTab("Config", null, panelConfig, "Configuraci\u00F3n del bot");
 		panelConfig.setLayout(null);
 		
-		JButton bCrearCuenta = new JButton(idioma.getProperty("lblcrearcuenta"));
+		JButton bCrearCuenta = new JButton("Crear Cuenta en Quakenet");
 		bCrearCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				crearCuenta.setVisible(true);
@@ -335,41 +330,41 @@ public class Interfaz {
 		bCrearCuenta.setBounds(231, 209, 198, 23);
 		panelConfig.add(bCrearCuenta);
 		
-		JLabel lblCanal = new JLabel(idioma.getProperty("lblcanal"));
+		JLabel lblCanal = new JLabel("Canal Azubu:");
 		lblCanal.setBounds(10, 11, 95, 14);
 		panelConfig.add(lblCanal);
 		
 		txtCanal = new JTextField();
-		txtCanal.setToolTipText(idioma.getProperty("lblcanalhelp"));
+		txtCanal.setToolTipText("Tu usuario en Azubu, ejemplo: dm94dani");
 		txtCanal.setBounds(121, 8, 124, 20);
 		panelConfig.add(txtCanal);
 		txtCanal.setColumns(10);
 		
-		JLabel lblIdioma = new JLabel(idioma.getProperty("lblidioma"));
+		JLabel lblIdioma = new JLabel("Idioma del chat:");
 		lblIdioma.setBounds(10, 36, 95, 14);
 		panelConfig.add(lblIdioma);
 		
-		JLabel lblUsuario = new JLabel(idioma.getProperty("lblusuario"));
+		JLabel lblUsuario = new JLabel("Usuario IRC:");
 		lblUsuario.setBounds(10, 64, 95, 14);
 		panelConfig.add(lblUsuario);
 		
 		txtUsuario = new JTextField();
-		txtUsuario.setToolTipText(idioma.getProperty("lblusuarioayuda"));
+		txtUsuario.setToolTipText("El usuario creado en Quakenet");
 		txtUsuario.setBounds(121, 61, 124, 20);
 		panelConfig.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
-		JLabel lblContra = new JLabel(idioma.getProperty("lblcontra"));
+		JLabel lblContra = new JLabel("Contrase\u00F1a IRC:");
 		lblContra.setBounds(10, 92, 95, 14);
 		panelConfig.add(lblContra);
 		
 		txtContra = new JTextField();
-		txtContra.setToolTipText(idioma.getProperty("lblcontrahelp"));
+		txtContra.setToolTipText("La contrase\u00F1a del usuario creado en Quakenet");
 		txtContra.setBounds(121, 89, 124, 20);
 		panelConfig.add(txtContra);
 		txtContra.setColumns(10);
 		
-		JButton bGuardar = new JButton(idioma.getProperty("bguardar"));
+		JButton bGuardar = new JButton("Guardar");
 		bGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				crearConfig();
@@ -378,25 +373,25 @@ public class Interfaz {
 		bGuardar.setBounds(281, 7, 148, 23);
 		panelConfig.add(bGuardar);
 		
-		JLabel lblAdmin = new JLabel(idioma.getProperty("lbladmin"));
+		JLabel lblAdmin = new JLabel("Admin (Opcional):");
 		lblAdmin.setBounds(10, 120, 95, 20);
 		panelConfig.add(lblAdmin);
 		
 		txtAdmin = new JTextField();
-		txtAdmin.setToolTipText(idioma.getProperty("lbladminhelp"));
+		txtAdmin.setToolTipText("Si quieres que alguien quiera administrar el bot desde el chat");
 		txtAdmin.setColumns(10);
 		txtAdmin.setBounds(121, 120, 124, 20);
 		panelConfig.add(txtAdmin);
 		
 		cbIdioma = new JComboBox();
-		cbIdioma.setToolTipText(idioma.getProperty("cbidioma"));
+		cbIdioma.setToolTipText("El idioma del chat");
 		cbIdioma.setBounds(121, 33, 124, 20);
 		panelConfig.add(cbIdioma);
 		
 		cbIdioma.addItem("en");
 		cbIdioma.addItem("es");
 		
-		JButton bCerrar = new JButton(idioma.getProperty("bcerrar"));
+		JButton bCerrar = new JButton("Cerrar el programa");
 		bCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gestionInterfazPrincipal.pararPrograma();
@@ -405,7 +400,7 @@ public class Interfaz {
 		bCerrar.setBounds(281, 36, 148, 23);
 		panelConfig.add(bCerrar);
 		
-		checkAutoSaludo = new JCheckBox(idioma.getProperty("checkautosaludo"));
+		checkAutoSaludo = new JCheckBox("Auto Saludo");
 		checkAutoSaludo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(checkAutoSaludo.isSelected()){
@@ -419,7 +414,7 @@ public class Interfaz {
 		checkAutoSaludo.setBounds(281, 66, 148, 23);
 		panelConfig.add(checkAutoSaludo);
 		
-		checkSiempreVisible = new JCheckBox(idioma.getProperty("checksiemprevisible"));
+		checkSiempreVisible = new JCheckBox("Siempre Visible");
 		checkSiempreVisible.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(checkSiempreVisible.isSelected()){
@@ -432,37 +427,12 @@ public class Interfaz {
 		checkSiempreVisible.setBounds(281, 88, 148, 23);
 		panelConfig.add(checkSiempreVisible);
 		
-		JLabel lblIdiomaDelBot = new JLabel(idioma.getProperty("idiomabot"));
-		lblIdiomaDelBot.setBounds(10, 151, 95, 20);
-		panelConfig.add(lblIdiomaDelBot);
-		
-		cbIdiomaBot = new JComboBox();
-		cbIdiomaBot.setBounds(121, 151, 124, 20);
-		panelConfig.add(cbIdiomaBot);
-		
-		cbIdiomaBot.addItem("Español");
-		cbIdiomaBot.addItem("English");
-		
-		JButton btnCambiarIdioma = new JButton(idioma.getProperty("cambiaridioma"));
-		btnCambiarIdioma.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Interfaz windows= new Interfaz(cbIdiomaBot.getSelectedItem().toString());
-				windows.frmDmbot.setVisible(true);
-				try {
-					window.frmDmbot.dispose();
-				} catch (Throwable e) {
-				}
-			}
-		});
-		btnCambiarIdioma.setBounds(10, 209, 124, 23);
-		panelConfig.add(btnCambiarIdioma);
-		
 		JPanel panelSorteo = new JPanel();
 		panelSorteo.setBorder(null);
-		panelPrincipal.addTab(idioma.getProperty("sorteo"), null, panelSorteo, idioma.getProperty("sorteohelp"));
+		panelPrincipal.addTab("Sorteo", null, panelSorteo, "Permite realizar sorteos");
 		panelSorteo.setLayout(null);
 		
-		JLabel lblPalabra = new JLabel(idioma.getProperty("lblpalabra"));
+		JLabel lblPalabra = new JLabel("Introduce la KeyWord:");
 		lblPalabra.setBounds(10, 40, 202, 14);
 		panelSorteo.add(lblPalabra);
 		
@@ -472,45 +442,45 @@ public class Interfaz {
 		panelSorteo.add(txtKeyWord);
 		txtKeyWord.setColumns(10);
 		
-		JButton bIniciarSorteo = new JButton(idioma.getProperty("biniciarsorteo"));
+		JButton bIniciarSorteo = new JButton("Iniciar Sorteo");
 		bIniciarSorteo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(Config.isBot()){
 					if(Config.isSorteo()){
-						mostrarError(idioma.getProperty("errorsorteoenmarcha"));
+						mostrarError("El sorteo ya esta en marcha");
 					}else{
 						iniciarSorteo();
 					}
 				}else{
-					mostrarError(idioma.getProperty("errorbotencendido"));
+					mostrarError("El bot tiene que estar encendido");
 				}
 			}
 		});
 		bIniciarSorteo.setBounds(10, 117, 237, 23);
 		panelSorteo.add(bIniciarSorteo);
 		
-		JButton bSacarGanador = new JButton(idioma.getProperty("bsacarganador"));
+		JButton bSacarGanador = new JButton("Sacar Ganador");
 		bSacarGanador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(Config.isBot()){
 					if(Config.isSorteo()){
 						sacarGanador();
 					}else{
-						mostrarError(idioma.getProperty("errorbotnoenmarcha"));
+						mostrarError("El sorteo no se ha puesto en marcha");
 					}
 				}else{
-					mostrarError(idioma.getProperty("errorbotencendido"));
+					mostrarError("El bot tiene que estar encendido");
 				}
 			}
 		});
 		bSacarGanador.setBounds(10, 151, 237, 23);
 		panelSorteo.add(bSacarGanador);
 		
-		JLabel lblApuntados = new JLabel(idioma.getProperty("lblapuntados"));
+		JLabel lblApuntados = new JLabel("Apuntados al Sorteo");
 		lblApuntados.setBounds(257, 11, 172, 14);
 		panelSorteo.add(lblApuntados);
 		
-		checkAviso = new JCheckBox(idioma.getProperty("checkaviso"));
+		checkAviso = new JCheckBox("Aviso en el Chat");
 		checkAviso.setSelected(true);
 		checkAviso.setBounds(10, 87, 225, 23);
 		panelSorteo.add(checkAviso);
@@ -521,11 +491,11 @@ public class Interfaz {
 		lblSorteoGanador.setBounds(18, 187, 217, 45);
 		panelSorteo.add(lblSorteoGanador);
 		
-		JLabel lblSorteo = new JLabel(idioma.getProperty("lblestadosorteo"));
+		JLabel lblSorteo = new JLabel("Estado del sorteo:");
 		lblSorteo.setBounds(10, 11, 109, 14);
 		panelSorteo.add(lblSorteo);
 		
-		estadoSorteo = new JLabel(idioma.getProperty("off"));
+		estadoSorteo = new JLabel("OFF");
 		estadoSorteo.setBounds(166, 11, 46, 14);
 		panelSorteo.add(estadoSorteo);
 		
@@ -540,18 +510,18 @@ public class Interfaz {
 		
 		JPanel panelVotacion = new JPanel();
 		panelVotacion.setBorder(null);
-		panelPrincipal.addTab(idioma.getProperty("votacion"), null, panelVotacion, idioma.getProperty("votacionhelp"));
+		panelPrincipal.addTab("Votacion", null, panelVotacion, "Permite realizar Votaciones");
 		panelVotacion.setLayout(null);
 		
-		JLabel lblVotacion = new JLabel(idioma.getProperty("estadovotacion"));
+		JLabel lblVotacion = new JLabel("Estado de la votacion:");
 		lblVotacion.setBounds(10, 11, 124, 14);
 		panelVotacion.add(lblVotacion);
 		
-		estadoVotacion = new JLabel(idioma.getProperty("off"));
+		estadoVotacion = new JLabel("OFF");
 		estadoVotacion.setBounds(151, 11, 39, 14);
 		panelVotacion.add(estadoVotacion);
 		
-		JLabel lblTxtVotacion = new JLabel(idioma.getProperty("textovotacion"));
+		JLabel lblTxtVotacion = new JLabel("Texto de la votaci\u00F3n");
 		lblTxtVotacion.setBounds(10, 36, 161, 20);
 		panelVotacion.add(lblTxtVotacion);
 		
@@ -560,49 +530,49 @@ public class Interfaz {
 		panelVotacion.add(txtFraseVotacion);
 		txtFraseVotacion.setColumns(10);
 		
-		JButton bIniciarVotacion = new JButton(idioma.getProperty("biniciarvotacion"));
+		JButton bIniciarVotacion = new JButton("Iniciar Votaci\u00F3n");
 		bIniciarVotacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(Config.isBot()){
 					if(Config.isVotacion()){
-						mostrarError(idioma.getProperty("errorvotacionencendida"));
+						mostrarError("La votación ya esta encendida");
 					}else{
 						iniciarVotacion();
 					}
 				}else{
-					mostrarError(idioma.getProperty("errorbotencendido"));
+					mostrarError("El bot tiene que estar encendido");
 				}
 			}
 		});
 		bIniciarVotacion.setBounds(10, 84, 419, 23);
 		panelVotacion.add(bIniciarVotacion);
 		
-		JButton bPararVotacion = new JButton(idioma.getProperty("bpararvotacion"));
+		JButton bPararVotacion = new JButton("Parar Votaci\u00F3n");
 		bPararVotacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(Config.isBot()){
 					if(Config.isVotacion()){
 						gestionInterfazPrincipal.pararVotacion();
 					}else{
-						mostrarError(idioma.getProperty("errorvotacionapagada"));
+						mostrarError("La votación tiene que estar encendida");
 					}
 				}else{
-					mostrarError(idioma.getProperty("errorbotencendido"));
+					mostrarError("El bot tiene que estar encendido");
 				}
 			}
 		});
 		bPararVotacion.setBounds(10, 118, 419, 23);
 		panelVotacion.add(bPararVotacion);
 		
-		JLabel lblVTotal = new JLabel(idioma.getProperty("lblvotostotal"));
+		JLabel lblVTotal = new JLabel("Votos en Total:");
 		lblVTotal.setBounds(10, 152, 124, 20);
 		panelVotacion.add(lblVTotal);
 		
-		JLabel lblVAFavor = new JLabel(idioma.getProperty("lblvotosfavor"));
+		JLabel lblVAFavor = new JLabel("Votos a favor:");
 		lblVAFavor.setBounds(10, 177, 124, 20);
 		panelVotacion.add(lblVAFavor);
 		
-		JLabel lblNewLabel = new JLabel(idioma.getProperty("lblvotoscontra"));
+		JLabel lblNewLabel = new JLabel("Votos en contra:");
 		lblNewLabel.setBounds(10, 202, 124, 20);
 		panelVotacion.add(lblNewLabel);
 		
@@ -627,7 +597,7 @@ public class Interfaz {
 		txtVContra.setBounds(151, 202, 86, 20);
 		panelVotacion.add(txtVContra);
 		
-		JButton btnAadirVotoA = new JButton(idioma.getProperty("aniadirvoto"));
+		JButton btnAadirVotoA = new JButton("A\u00F1adir Voto a favor");
 		btnAadirVotoA.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(Config.isVotacion()){
@@ -638,7 +608,7 @@ public class Interfaz {
 		btnAadirVotoA.setBounds(247, 176, 182, 23);
 		panelVotacion.add(btnAadirVotoA);
 		
-		JButton btnNewButton = new JButton(idioma.getProperty("aniadirvotocontra"));
+		JButton btnNewButton = new JButton("A\u00F1adir Voto en contra");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(Config.isVotacion()){
@@ -651,10 +621,10 @@ public class Interfaz {
 		
 		JPanel panelChat = new JPanel();
 		panelChat.setBorder(null);
-		panelPrincipal.addTab(idioma.getProperty("chatbot"), null, panelChat, null);
+		panelPrincipal.addTab("ChatBot", null, panelChat, null);
 		panelChat.setLayout(null);
 		
-		JButton bChatEnviar = new JButton(idioma.getProperty("benviar"));
+		JButton bChatEnviar = new JButton("Enviar");
 		bChatEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(Config.isBot()){
@@ -662,10 +632,10 @@ public class Interfaz {
 						mandarMensaje(TwitchBot.getCanal(), txtMSGEnviar.getText());
 						txtMSGEnviar.setText("");
 					}else{
-						aniadirMensajeChat(idioma.getProperty("error"),idioma.getProperty("errornotexto"));
+						aniadirMensajeChat("Error","No hay mensaje para mandar");
 					}
 				}else{
-					aniadirMensajeChat(idioma.getProperty("error"),idioma.getProperty("errorbotencendido"));
+					aniadirMensajeChat("Error","El bot tiene que estar encendido");
 				}
 			}
 			
@@ -683,10 +653,10 @@ public class Interfaz {
 							mandarMensaje(TwitchBot.getCanal(), txtMSGEnviar.getText());
 							txtMSGEnviar.setText("");
 						}else{
-							aniadirMensajeChat(idioma.getProperty("error"),idioma.getProperty("errornotexto"));
+							aniadirMensajeChat("Error","No hay mensaje para mandar");
 						}
 					}else{
-						aniadirMensajeChat(idioma.getProperty("error"),idioma.getProperty("errorbotencendido"));
+						aniadirMensajeChat("Error","El bot tiene que estar encendido");
 					}
 				}
 			}
@@ -705,11 +675,11 @@ public class Interfaz {
 		
 		JPanel panelPuntos = new JPanel();
 		panelPuntos.setBorder(null);
-		panelPrincipal.addTab(idioma.getProperty("puntos"), null, panelPuntos, null);
+		panelPrincipal.addTab("Puntos", null, panelPuntos, null);
 		panelPrincipal.setEnabledAt(5, false);
 		panelPuntos.setLayout(null);
 		
-		JButton btnConfiguracin = new JButton(idioma.getProperty("config"));
+		JButton btnConfiguracin = new JButton("Configuraci\u00F3n");
 		btnConfiguracin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				pantallaBD.setVisible(true);
@@ -722,7 +692,7 @@ public class Interfaz {
 		JPanel consola = new JPanel();
 		if(debug){
 			consola.setBorder(null);
-			panelPrincipal.addTab(idioma.getProperty("consola"), null, consola, null);
+			panelPrincipal.addTab("Consola", null, consola, null);
 			panelPrincipal.setEnabledAt(6, true);
 			consola.setLayout(null);	
 		}else{
@@ -818,7 +788,7 @@ public class Interfaz {
 		String usuario = null;
 		String contra = null;
 		String admin = null;
-		String idiomas = "";
+		String idioma = "";
 		int inicio=0;
 		int fin=0;
 		f=new File(fConfig);
@@ -827,9 +797,9 @@ public class Interfaz {
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
-				mostrarError(idioma.getProperty("errorarchivoconfig"));
+				mostrarError("No se ha podido crear el archivo de configuración");
 			}
-			mostrarError(idioma.getProperty("errornoarchivoconfig"));
+			mostrarError("El archivo de configuracion no existia se ha creado uno");
 		}
 		
 		FileReader pr;
@@ -846,10 +816,10 @@ public class Interfaz {
 				}else if(cad.contains("idioma")){
 					inicio=cad.indexOf(":");
 		            fin=cad.indexOf(";", inicio);
-		            idiomas=cad.substring(inicio+1, fin);
-		            if(idiomas.contains("es")){
+		            idioma=cad.substring(inicio+1, fin);
+		            if(idioma.contains("es")){
 		            	cbIdioma.setSelectedIndex(1);
-		            }else if(idiomas.contains("en")){
+		            }else if(idioma.contains("en")){
 		            	cbIdioma.setSelectedIndex(0);
 		            }else{
 		            	cbIdioma.setSelectedIndex(0);
@@ -885,9 +855,9 @@ public class Interfaz {
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
-			mostrarError(idioma.getProperty("errorarchivoconfig"));
+			mostrarError("No se ha encontrado el fichero de configuracion");
 		} catch (IOException e) {
-			mostrarError(idioma.getProperty("errorleerconfig"));
+			mostrarError("Error en la lectura del fichero de configuracion");
 		}
 		
 		
@@ -905,10 +875,10 @@ public class Interfaz {
 			Canal.setPassIRC(contra);
 			Canal.setUsuarioIRC(usuario);
 			Canal.setCanal(canal);
-			Canal.setIdiomaIRC(idiomas);
+			Canal.setIdiomaIRC(idioma);
 			actualizarEstados();
 		}else{
-			mostrarError(idioma.getProperty("errordatosincorrectos"));
+			mostrarError("Los datos de configuracion son incorrectos");
 		}
 		
 	}
@@ -917,7 +887,7 @@ public class Interfaz {
 		File f=new File(fConfig);
 		in=new BufferedReader(new InputStreamReader(System.in));
 		String canal = txtCanal.getText().toLowerCase();
-		String idiomas = (String) cbIdioma.getSelectedItem();
+		String idioma = (String) cbIdioma.getSelectedItem();
 		String usuario = txtUsuario.getText().toLowerCase();
 		String pass = txtContra.getText();
 		String admin;
@@ -928,14 +898,14 @@ public class Interfaz {
 		}
 		
 		
-		if(!(canal.isEmpty() & idiomas.isEmpty() & usuario.isEmpty() & pass.isEmpty() & admin.isEmpty())){
+		if(!(canal.isEmpty() & idioma.isEmpty() & usuario.isEmpty() & pass.isEmpty() & admin.isEmpty())){
 			try {
 				FileWriter fw=new FileWriter(f);
 				BufferedWriter bw=new BufferedWriter(fw);
 				
 				bw.write("canal:"+canal+";");
 				bw.newLine();
-				bw.write("idioma:"+idiomas+";");
+				bw.write("idioma:"+idioma+";");
 				bw.newLine();
 				bw.write("usuario:"+usuario+";");
 				bw.newLine();
@@ -960,10 +930,10 @@ public class Interfaz {
 				bw.close();
 				fw.close();
 			} catch (IOException e) {
-				mostrarError(idioma.getProperty("errorguardararchivo"));
+				mostrarError("No se ha podido guardar el fichero correctamente");
 			}
 		}else{
-			mostrarError(idioma.getProperty("errorcamposvacios"));
+			mostrarError("Algunos de los campos esta vacio");
 		}
 		
 		leerConfig(fConfig);
@@ -1003,39 +973,39 @@ public class Interfaz {
 			bw.close();
 			fw.close();
 		} catch (IOException e) {
-			mostrarError(idioma.getProperty("errorguardararchivo"));
+			mostrarError("No se ha podido guardar el fichero correctamente");
 		}
 	}
 	
 	public static void actualizarEstados(){
 		if(Config.isBot()){
-			estadoBot.setText(idioma.getProperty("on"));
+			estadoBot.setText("ON");
 		}else{
-			estadoBot.setText(idioma.getProperty("off"));
+			estadoBot.setText("OFF");
 		}
 		
 		if(Config.isGenKey()){
-			estadoGenKey.setText(idioma.getProperty("on"));
+			estadoGenKey.setText("ON");
 		}else{
-			estadoGenKey.setText(idioma.getProperty("off"));
+			estadoGenKey.setText("OFF");
 		}
 		
 		if(Config.isModLinks()){
-			estadoModLinks.setText(idioma.getProperty("on"));
+			estadoModLinks.setText("ON");
 		}else{
-			estadoModLinks.setText(idioma.getProperty("off"));
+			estadoModLinks.setText("OFF");
 		}
 		
 		if(Config.isSorteo()){
-			estadoSorteo.setText(idioma.getProperty("on"));
+			estadoSorteo.setText("ON");
 		}else{
-			estadoSorteo.setText(idioma.getProperty("off"));
+			estadoSorteo.setText("OFF");
 		}
 		
 		if(Config.isVotacion()){
-			estadoVotacion.setText(idioma.getProperty("on"));
+			estadoVotacion.setText("ON");
 		}else{
-			estadoVotacion.setText(idioma.getProperty("off"));
+			estadoVotacion.setText("OFF");
 		}
 		
 		if(Config.isAutoSaludo()){
@@ -1053,7 +1023,7 @@ public class Interfaz {
 	
 	public void iniciarSorteo(){
 		TwitchBot.setKeyWord(txtKeyWord.getText());
-		mandarMensaje(TwitchBot.getCanal(),idioma.getProperty("sorteoenmarcha")+" "+txtKeyWord.getText());
+		mandarMensaje(TwitchBot.getCanal(),"Sorteo en marcha para participar poned: "+txtKeyWord.getText());
 		Sorteo.inciarSorteo();
 		
 		Config.activarSorteo();
@@ -1073,20 +1043,20 @@ public class Interfaz {
 		Config.desactivarSorteo();
 		ganador=Sorteo.sacarGanador();
 		
-		lblSorteoGanador.setText(idioma.getProperty("elganador")+" "+ganador);
+		lblSorteoGanador.setText("El ganador es: "+ganador);
 		
 		if(checkAviso.isSelected()){
-			mandarMensaje(TwitchBot.getCanal(),idioma.getProperty("elganador")+" @"+ganador);
+			mandarMensaje(TwitchBot.getCanal(),"El ganador del sorteo es: @"+ganador);
 		}
 		
 		actualizarEstados();
 	}
 	
 	public void iniciarVotacion(){
-		Votacion.iniciarVotacion("@"+idioma.getProperty("votacion")+" "+txtFraseVotacion.getText());
-		Interfaz.mandarMensaje(TwitchBot.getCanal(), idioma.getProperty("lavotacion")+" \""+Votacion.getMensaje()+"\" "+idioma.getProperty("haempezado"));
-		Interfaz.mandarMensaje(TwitchBot.getCanal(), idioma.getProperty("ponedmasuno"));
-		Interfaz.mandarMensaje(TwitchBot.getCanal(), idioma.getProperty("ponedmenosuno"));
+		Votacion.iniciarVotacion("@votacion "+txtFraseVotacion.getText());
+		Interfaz.mandarMensaje(TwitchBot.getCanal(), "La votacion por \""+Votacion.getMensaje()+"\" ha empezado");
+		Interfaz.mandarMensaje(TwitchBot.getCanal(), "Poned +1 para Votos a favor");
+		Interfaz.mandarMensaje(TwitchBot.getCanal(), "Poned -1 para Votos en contra");
 		Config.activarVotacion();
 		actualizarEstados();
 	}
