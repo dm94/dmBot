@@ -69,7 +69,7 @@ public class Canal {
             
           //Actualizar el juego
             inicio=cad.indexOf("title");
-            fin=cad.indexOf("language", inicio);
+            fin=cad.indexOf("url_thumbnail", inicio);
             estadoAr=cad.substring(inicio+8, fin-4);
             
             if(estadoAr.length()>0){
