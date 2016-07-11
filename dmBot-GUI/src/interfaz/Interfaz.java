@@ -311,6 +311,7 @@ public class Interfaz {
 					} catch (NickAlreadyInUseException e1) {
 						mostrarError(idioma.getProperty("erroryaexisteusuario"));
 					} catch (IOException e1) {
+						e1.printStackTrace();
 						mostrarError(idioma.getProperty("errorleerdatos"));
 					} catch (IrcException e1) {
 						mostrarError(idioma.getProperty("errorconexion"));
@@ -779,7 +780,7 @@ public class Interfaz {
 		
 		bot= new TwitchBot(usuario,"azubu."+canalConectarse+"."+idioma,admin);
 		bot.setVerbose(true);
-		bot.connect("b0rk.uk.quakenet.org" ,6667);
+		bot.connect("euroserv.fr.quakenet.org" ,6667);
 		
 		try {
 			Thread.sleep(3000);
