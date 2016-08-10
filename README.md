@@ -1,3 +1,8 @@
+# dmBot
+
+[![Github All Releases](https://img.shields.io/github/downloads/dm94/dmBot/total.svg)](https://github.com/dm94/dmBot/releases)
+[![Twitter Follow](https://img.shields.io/twitter/follow/dm94dani.svg?style=social&label=Follow&maxAge=1)](https://twitter.com/dm94dani)
+
 Para usar este bot necesitas crear una cuenta IRC en https://www.quakenet.org/
 config.txt = Aqui va la configuracion del bot y si no esta el archivo es recomendable abrir el bot para crearlo
 
