@@ -48,47 +48,6 @@ Comandos disponibles para el bot:
 El bot cadece de interfaz grafica por lo que se ejecuta poniendo en la consola/terminal:
 java -mx30M -jar dmBot.jar
 
-Log:
-
-14/09/2015:
-- Primera Versión.
-
-v1.1 - 16/09/2015:
-- Mejorada la estabilidad del programa.
-- Arreglado un bug por el solo se comprobaba si los canales estaban online la primera vez.
-
-v2 - 17/09/2015:
-- Rediseñado el bot para mejorar la estabilidad y poder añadirle nuevas funciones
-- Añadido un generador de keys aleatorias como nueva caracteristica
-- Cambio del nombre de ahBot a dmBot (Ya no solo servira para hacer autohost).
-- Añadido la funcion de sorteo
-
-v2.1 - 18/09/2015:
-- Añadido control de varias excepciones.
-- Cambiado la captura del archivo de configuracion
-
-v2.2 - 19/09/2015:
-- Añadida la caracteristica de votaciones.
-
-v2.3 - 22/09/2015:
--Mejorada la estabilidad del sistema.
--Cambio de comandos y adicion de nuevos.
--Añadida funcion auto saludar
-
-v2.5 - 20/10/2015:
--Restructurado el bot para que funcione en Azubu.
--Desde ahora en adelante el bot tendra dos versiones la de Twitch y la de Azubu
-
-v3.1 - 03/11/2015:
-
--Añadido interfaz lo que permite añadir mas funciones
--Añadido chat del bot
--Rediseñado el codigo para mejorar su rendimiento
--La versión de Twitch ha sido abandonada.
--Arreglados diferentes errores
-
-v3.2 - 16/11/2015:
-
--Arreglados diferentes fallos
--Añadido una version Debug
--Mejora de la interfaz
+<h2><a name="donating">Donaciones</a></h2>
+<a name="paypal">Feel free to buy us all a beer, by using PayPal:</a><br/>
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://paypal.me/dm94dani)<br/>
