@@ -49,5 +49,4 @@ El bot cadece de interfaz grafica por lo que se ejecuta poniendo en la consola/t
 java -mx30M -jar dmBot.jar
 
 <h2><a name="donating">Donaciones</a></h2>
-<a name="paypal">Feel free to buy us all a beer, by using PayPal:</a><br/>
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://paypal.me/dm94dani)<br/>
